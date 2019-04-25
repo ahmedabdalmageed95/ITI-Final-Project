@@ -1,0 +1,100 @@
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csc.exe
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csc.exe.config
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csc.rsp
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csi.exe
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csi.rsp
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.AppContext.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.Collections.Immutable.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.IO.FileSystem.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.Reflection.Metadata.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\vbc.exe
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\vbc.exe.config
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\vbc.rsp
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\VBCSCompiler.exe
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\VBCSCompiler.exe.config
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\MegoKoraWebApi.dll.config
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\MegoKoraWebApi.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\MegoKoraWebApi.pdb
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\EntityFramework.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\EntityFramework.SqlServer.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\Newtonsoft.Json.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\System.Net.Http.Formatting.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Cors.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.Cors.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.WebHost.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\EntityFramework.xml
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\EntityFramework.SqlServer.xml
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\System.Net.Http.Formatting.xml
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.xml
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.Cors.xml
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\Newtonsoft.Json.xml
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.WebHost.xml
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\obj\Debug\MegoKoraWebApi.csprojResolveAssemblyReference.cache
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\obj\Debug\MegoKoraWebApi.dll
+E:\fullstack2018-3months\GP\back-end\MegoKoraWebApi\MegoKoraWebApi\obj\Debug\MegoKoraWebApi.pdb
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csc.exe
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csc.exe.config
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csc.rsp
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csi.exe
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\csi.rsp
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.AppContext.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.Collections.Immutable.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.IO.FileSystem.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\System.Reflection.Metadata.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\vbc.exe
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\vbc.exe.config
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\vbc.rsp
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\VBCSCompiler.exe
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\roslyn\VBCSCompiler.exe.config
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\MegoKoraWebApi.dll.config
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\MegoKoraWebApi.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\MegoKoraWebApi.pdb
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\EntityFramework.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\EntityFramework.SqlServer.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\Newtonsoft.Json.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\System.Net.Http.Formatting.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Cors.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.Cors.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.WebHost.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\EntityFramework.xml
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\EntityFramework.SqlServer.xml
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\System.Net.Http.Formatting.xml
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.xml
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.Cors.xml
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\Newtonsoft.Json.xml
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\bin\System.Web.Http.WebHost.xml
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\obj\Debug\MegoKoraWebApi.csprojAssemblyReference.cache
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\obj\Debug\MegoKoraWebApi.csproj.CoreCompileInputs.cache
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\obj\Debug\MegoKoraWebApi.csproj.CopyComplete
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\obj\Debug\MegoKoraWebApi.dll
+E:\ITI\Grad Project\Back End\MegoKoraWebApi\MegoKoraWebApi\obj\Debug\MegoKoraWebApi.pdb
