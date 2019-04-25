@@ -1,0 +1,93 @@
+<!-- Start Navbar -->
+<div class="mb-3">
+<app-navbar-client></app-navbar-client>
+</div>
+<!-- End Navbar -->
+
+<div class="container">
+    
+        <table class="table table-striped table-bordered m-3 text-center" *ngIf="Reservations&&Reservations.length>0">
+                <tr>
+                    <th>
+                        From
+                    </th>
+                    <th>
+                        To
+                    </th>
+                    <th>
+                        Number Of Hours
+                    </th>
+                    <th>
+                        Day
+                    </th>
+                    <th>
+                        Month
+                    </th>
+                    <th>
+                        Year
+                    </th>
+                    <th>
+                        PlayGround
+                    </th>
+                    <th>
+                        Sub Playground
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                </tr>
+                <tr *ngFor="let item of Reservations; let i=index">
+                    <td>{{item?.From}}</td>
+                    <td>{{item?.To}}</td>
+                    <td>{{item?.NumberOfHours}}</td>
+                    <td>{{item?.Day}}</td>
+                    <td>{{item?.Month}}</td>
+                    <td>{{item?.Year}}</td>
+                    <td>{{item?.SubPlayground?.Playground?.Name}}</td>
+                    <td>
+                        {{GetSPIndex(item?.SubPlayground?.Playground?.SubPlaygrounds,item?.SubPlaygroundID)}}
+                    </td>
+                    <td>
+                        {{item?.TotalMoney}}
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" [hidden]="!CheckDate(item?.Year,item?.Month,item?.Day)||item?.ReservationISDone" data-toggle="modal" data-target="#ResModal" (click)="SetDeleted(item)"><i class="fas fa-times"></i> Delete</button>
+                        <!-- <button class="btn btn-danger" [hidden]="!item?.ReservationISDone" data-toggle="modal" data-target="#ResModal" (click)="SetDeleted(item)"><i class="fas fa-times"></i> Delete</button> -->
+                    </td>
+                </tr>
+            </table>
+        
+            <div class="alert alert-warning" role="alert" *ngIf="(!(Reservations&&Reservations.length>0))&&Resfinished">
+                You haven't made any reservation yet, <a [routerLink]="['/clubs/search']" routerLinkActive="active">Reserve Now!</a>
+            </div>
+        
+            <!-- Modal -->
+            <div class="modal fade" id="ResModal" tabindex="-1" role="dialog" aria-labelledby="ResModalLabel" aria-hidden="true" *ngIf="ShowModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ResModalLabel">Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body">
+                            <div *ngIf="CurrentDeleted">
+                                Are You Sure You Want To Delete this Reservation ?
+                                <br> From : {{CurrentDeleted?.From}} To : {{CurrentDeleted?.To}}
+                                <br> Date :{{CurrentDeleted?.Day}}/{{CurrentDeleted?.Month}}/{{CurrentDeleted?.Year}}
+                                <br> PlayGround : {{CurrentDeleted?.SubPlayground?.Playground?.Name}}
+                                <br> SubPlayGround :{{GetSPIndex(CurrentDeleted?.SubPlayground?.Playground?.SubPlaygrounds,CurrentDeleted?.SubPlaygroundID)}}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="DeleteReservation(CurrentDeleted?.ReservationID)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>

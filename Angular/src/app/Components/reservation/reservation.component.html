@@ -1,0 +1,93 @@
+<!-- start navbar -->
+<!-- <div class="mb-3">
+<app-navbar-client></app-navbar-client>
+</div> -->
+<!-- end navbar -->
+
+<div class="container text-center">
+    <div class="card mx-auto my-3" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 class="card-title">1. Choose Date</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
+                    </div>
+                    <input type="date" class="form-control w-75" name="Date" id="Date" [min]="Today"
+                        [(ngModel)]="ChosenDate">
+                    <!-- <button class="btn btn-primary p-2 my-2 float-right" id="SetDate">Set Date</button> -->
+                </div>
+                <div class="alert alert-danger mt-2" [hidden]="!Show_Error">Please Enter A Valid Date</div>
+            </li>
+        </ul>
+    </div>
+    
+    <!---==================================-->
+    <div class="card mx-auto my-3" *ngIf="!Show_Error">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 class="card-title">2. Choose Duration</h5>
+                <div class="card-body" *ngIf="Show_DivText">
+                    <p class="card-text"><i class="fas fa-spinner fa-spin"></i><br>Waiting for selecting date</p>
+                </div>
+                <div class="input-group ">
+                    <div *ngFor="let item of ReservationsStates;let i=index">
+                        <span *ngIf="item==0">
+                            <button  class="btn btn-success m-1" (click)='Add(i)'>{{i+10}}:00 - {{i+11}}:00</button>
+                        </span>
+                        <span *ngIf="item==1">
+                            <button class="btn btn-danger m-1" disabled>{{i+10}}:00 - {{i+11}}:00</button>
+                        </span>
+                        <span *ngIf="item==2">
+                            <button class="btn btn-secondary m-1" disabled>{{i+10}}:00 - {{i+11}}:00</button>
+                        </span>
+                        <span *ngIf="item==3">
+                            <button class="btn btn-primary m-1" (click)='Remove(i)'>{{i+10}}:00 - {{i+11}}:00</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="alert alert-danger mt-2" [hidden]="!Show_Choice_Error">Please Choose Adjacent Slots</div>
+            </li>
+        </ul>
+    </div>
+    <!---==================================-->
+    <button class="btn btn-success" (click)='InsertReservation()' data-toggle="modal" data-target="#centralModalSuccess"
+    [disabled]='SlotsCtr==0||Show_Choice_Error'>Reserve</button>
+</div>
+
+<!-- Central Modal Medium Success -->
+
+<div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header modalBackground">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fas fa-star fa-2x mb-3" style="color:#EB7725"></i>
+          <h2>Great!</h2>
+          <!-- <p><strong>Your reservation successfully done.</strong></p> -->
+          <h5>Your reservation successfully done</h5>
+        </div>
+        <br>
+        <div class="text-center">
+            <a class="btn btn-info anchorBtn" (click)="goToRes()"><i class="fas fa-arrow-circle-left"></i>  My reservations</a>
+            <button class="btn btn-danger anchorBtn" id="closeModal" data-dismiss="modal"><i class="fas fa-times"></i>  Close</button>
+        </div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Success-->
+
+
+<!-- <app-comments></app-comments> -->

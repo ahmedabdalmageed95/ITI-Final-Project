@@ -1,0 +1,37 @@
+.logIn
+{
+  border:1px solid #cdcdcd;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 auto ;
+  margin-top: 100px;
+  width: 25%;
+}
+.btn-primary
+{
+  width: 90%;
+  margin: 10px 5% 0px;
+
+}
+
+.accounAs
+{
+  margin: 30px 0px 20px;
+}
+
+.successSpan{
+  background-color: #4cd84c;
+}
+.success{
+  border: 1px solid #4cd84c;
+  
+}
+.failedSpan
+{
+  background-color:rgb(255, 154, 154);
+
+}
+.failed{
+  border: 1px solid red;
+
+}

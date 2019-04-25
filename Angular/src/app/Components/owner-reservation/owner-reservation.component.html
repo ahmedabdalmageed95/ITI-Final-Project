@@ -1,0 +1,114 @@
+<!-- Start Navbar -->
+<div class="mb-3">
+<app-navbar-owner></app-navbar-owner>
+</div>
+<!-- End Navbar -->
+
+<body>
+    <div *ngIf="!PlayGrounds || PlayGrounds.length==0 ">
+        No Playgrounds !
+    </div>
+    <div *ngIf="PlayGrounds">
+        <div *ngFor="let item of PlayGrounds;let i=index">
+            <button class="btn btn-success" (click)="ShowSubPlayGrounds(item.PlaygroundID)">{{item?.Name}}</button>
+            <br>
+            <div class="btn-group" role="group" aria-label="Basic example" *ngIf="SubPlayGrounds && SubPlaygroundShow[i] && SPfinished">
+                <span *ngFor="let SP of SubPlayGrounds;let j=index">
+          <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#ResModalLong" (click)="ShowReservations(SP.SubPlaygroundID)">Playground{{j+1}}</button>
+      </span>
+            </div>
+        </div>
+
+        <div class="modal fade bd-example-modal-lg" id="ResModalLong" tabindex="-1" role="dialog" aria-labelledby="ResModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ResModalLongTitle">Reservations</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped " *ngIf="Reservations&&Reservations.length>0&&ResFinished">
+                            <tr>
+                                <th>From</th>
+                                <th> To</th>
+                                <th>Day</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                                <th>Total Money</th>
+                                <th>Client Name</th>
+                                <th>Payment Options</th>
+                                <!-- added ///////////////////////////////////   -->
+
+                            </tr>
+                            <tr *ngFor="let Res of Reservations; let k=index">
+                                <td>{{Res?.From}}</td>
+                                <td>{{Res?.To}}</td>
+                                <td>{{Res?.Day}}</td>
+                                <td>{{Res?.Month}}</td>
+                                <td>{{Res?.Year}}</td>
+                                <td>{{Res?.TotalMoney}}</td>
+                                <td>{{Res?.Client?.FirstName}} {{Res?.Client?.LastName}}</td>
+                                <!-- added ///////////////////////////////////   -->
+                                <td>
+                                    <button class="btn btn-primary" [disabled]="!ShowResolveButton(Res)" (click)="Resolve(Res)">Resolve Payment</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div *ngIf="(!(Reservations&&Reservations.length>0))&&ResFinished ">
+                            No Reservations Here :(
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+
+<!-- <div *ngIf=" PlayGroundNames && Playgroundfinished &&ResFinished && SPfinished ">
+    <div *ngFor="let item of PlayGroundNames;let i=index ">
+        <div> {{item}}</div>
+        <div *ngIf="SPfinished ">
+            <div *ngFor="let Sno of SubPlayGrounds[i];let j=index ">
+                <div> Playground:{{Sno}}</div>
+                <table class="table table-striped " *ngIf="TotalReservations[i][j]&&TotalReservations[i][j].length>0">
+                    <tr>
+                        <th>From</th>
+                        <th> To</th>
+                        <th>Day</th>
+                        <th>Month</th>
+                        <th>Year</th>
+                        <th>Total Money</th>
+                    </tr>
+                    <tr *ngFor="let Res of TotalReservations[i][j]; let k=index">
+                        <td>{{Res.From}}</td>
+                        <td>{{Res.To}}</td>
+                        <td>{{Res.Day}}</td>
+                        <td>{{Res.Month}}</td>
+                        <td>{{Res.Year}}</td>
+                        <td>{{Res.TotalMoney}}</td>
+                    </tr>
+                    </table>
+
+                    <div *ngIf="!(TotalReservations[i][j]&&TotalReservations[i][j].length>0)" class="alert alert-danger">
+                        No Reservations Made :(
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div> -->
+
+
+
+<!-- <div *ngIf="(Res&&Res.length>0&&Res[i]&&Res[i].length>0&&Res[i][j]&&Res[i][j].length>0)">
+                    No Reservations Made :(
+                      *ngIf="Res&&Res.length>0&&Res[i]&&Res[i].length>0&&Res[i][j]&&Res[i][j].length>0"
+                </div> -->

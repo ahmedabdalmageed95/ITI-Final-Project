@@ -1,0 +1,70 @@
+<!-- Start Navbar -->
+<div class="mb-3">
+<app-navbar></app-navbar>
+</div>
+<!-- End Navbar -->
+
+<div class="logIn">
+  <form (ngSubmit)="logIn(email.value,password.value, accountType.value)" >
+    <!-- email 1-->
+      <div class="form-group">
+        <h1 class="text-center">Login</h1>
+        <label for="exampleInputEmail1">Email address</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend" id="iconDiv">
+              <span class="input-group-text" id="emailSpan"><i class="fas fa-envelope"></i></span>
+            </div>
+            <input class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="someone@example.com"
+        #email="ngModel" name="email" [(ngModel)]="loginClientData.Email" type="email" email="true" required  >
+          </div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)"class="alert alert-danger">
+          <div *ngIf="email.errors.required">
+              E-mail is required.
+          </div>
+          <div *ngIf="email.errors.email">
+            <strong>Format:</strong> someone@example.com
+          </div>
+      </div>
+      </div>
+    <!-- -------------------------------------------------------- -->
+    <!-- Password 2-->
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="passwordSpan"><i class="fas fa-lock"></i></span>
+            </div>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+            name="password" [(ngModel)]="loginClientData.password"  #password="ngModel"  required minlength="3">
+          </div>   
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"class="alert alert-danger">
+            <div *ngIf="password.errors.required">
+                Password is required.
+            </div>
+            <div *ngIf="password.errors.minlength">
+                <strong>hint:</strong>Password at least 4 symbols.
+            </div>
+          </div>
+      </div>
+    <!-- -------------------------------------------------------- -->
+      <div class="input-group accounAs ">
+          <div class="input-group-prepend">
+              <label class="input-group-text" for="AccountType">Login As</label>
+            </div>
+          <select #accountType class="custom-select" id="AccountType">
+              <option value="Client">Client</option>
+              <option value="Owner">Owner</option>
+            </select>
+      </div>
+      <div class="alert alert-danger" *ngIf="OwnerError==true">
+        This <strong>Owner</strong> data does not exist.
+      </div>
+      <div class="alert alert-danger" *ngIf="ClientError==true">
+        This <strong>Client</strong> data does not exist.
+      </div>
+      <!-- <button (click)="logIn(email.value,password.value, accountType.value)"  class="btn btn-primary">LogIn</button> -->
+      <input type="submit" class="btn btn-primary" value="LogIn">
+    </form>
+</div>
+<router-outlet></router-outlet>

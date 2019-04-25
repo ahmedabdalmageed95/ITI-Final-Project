@@ -1,0 +1,169 @@
+.addplayground{
+    background-color:#FFFFFF;
+    max-width: 800px;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 0px 36px -2px rgba(0,0,0,0.77);
+-moz-box-shadow: 0px 0px 36px -2px rgba(0,0,0,0.77);
+box-shadow: 0px 0px 36px -2px rgba(0,0,0,0.77);
+}
+.picture-container {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+  }
+  .picture {
+    width: 106px;
+    height: 106px;
+    background-color: #999999;
+    border: 4px solid #CCCCCC;
+    color: #FFFFFF;
+    border-radius: 50%;
+    margin: 5px auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+  }
+
+  .picture-src {
+    width: 100%;
+  }
+  .picture:hover {
+    border-color: #4caf50;
+}
+.picture input[type="file"] {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  .custom-list
+  {
+      list-style: none;
+      margin: 0;
+      padding: 0;   
+      background-color:#F4F4F4;
+      width: 100%;
+    border-radius: 6px;
+      
+  }
+  .custom-list li{
+      float: left;
+      width: 100%;
+      text-align: center;
+      color: black;
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+  }
+  .custom-list .activeListItem{
+    border-radius: 3px;
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+  }
+
+.form-title
+{
+    background-color: #252C36;
+    color: white;
+    padding: 15px;
+    margin:0 0 15px 0;
+}
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.icon {
+    padding: 13px;
+    background: #252C36;
+    color: white;
+    min-width: 40px;
+    text-align: center;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+.input-custom{
+    border-left: none;
+    border-radius: 0;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 42px;
+}
+.form-custom{
+    padding: 20px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="file"]:focus,
+input[type="color"]:focus{   
+  /* border-color: rgba(126, 239, 104, 0.8); */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+}
+.test{
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  border-color: rgba(126, 239, 104, 0.8);
+
+}
+.form-custom label{
+    padding: 11px;
+}
+.addplayground h1 {
+    text-align: center;
+}
+
+select[disabled]{
+    cursor: not-allowed;
+}
+
+.custom-file-label{
+      border-left: none;
+    border-radius: 0;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 20px;
+    height: 43px;
+}
+.custom-file-input:lang(en)~.custom-file-label::after {
+    content: "Browse";
+    height: 41px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.required:after { 
+    content:" *";
+    position: relative;
+    left: -30px;
+    top: 7px;
+    color: red;
+}
+select{
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.fa-star{
+  color: rgb(230, 230, 14);
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: orange;
+}

@@ -1,0 +1,263 @@
+<!-- Start Navbar -->
+<div class="mb-3">
+<app-navbar-owner></app-navbar-owner>
+</div>
+<!-- End Navbar -->
+
+<!-- Add Card -->
+<div class="container cards">
+  <div class="row">
+    <div class="col-md-4  my-3">
+      <div class="card" style="width: 18rem;border: 1px dashed black">
+        <!-- <a [routerLink]="['/index']" routerLinkActive="active" class="nav-link">Home</a> -->
+        <a [routerLink]="['/owner/clubs/add']" routerLinkActive="active"><img src="../../../assets/imgs/add.jpg"
+            class="card-img-top" alt="..."></a>
+        <img src="../../../assets/imgs/Click.jpg" class="card-img-top" alt="...">
+      </div>
+    </div>
+
+    <!-- Main Clubs (Playgrounds) -->
+    <!--Start Database cards-->
+
+    <div class="col-md-4  my-3" *ngFor="let item of AllPlayGrounds">
+      <div class="card" style="width: 18rem;">
+        <img src="../../../assets/imgs/02.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">{{item.Name}}</h3>
+          <p class="card-text"><i class="fas fa-map-marker-alt"></i> <strong>Address: </strong>{{item.Country}} -
+            {{item.City}} - {{item.Street}}</p>
+          <p class="card-text"><i class="fas fa-phone"></i> <strong>Phones: </strong>{{item.Phone1}} <span
+              *ngIf="item.Phone2!=''"> - </span>{{item.Phone2}}</p>
+          <p class="card-text"><i class="far fa-smile-beam"></i> <strong>Rate: </strong><span class="card-text">
+              <span *ngIf="item.Rate==0"><i class="far fa-star"></i><i class="far fa-star"></i><i
+                  class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==1"><i class="fas fa-star"></i><i class="far fa-star"></i><i
+                  class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+            </span>
+          </p>
+          <div class="dropdown-divider"></div>
+          <div class="clearfix">
+            <button class="btn btn-danger float-right" (click)="DeletePlayground(item.PlaygroundID)"><i
+                class="fa fa-trash"></i> Delete</button>
+            <button class="btn btn-success float-left" (click)="goToAddSub(item.PlaygroundID)"><i
+                class="fa fa-plus"></i> Add</button>
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="clearfix">
+            <button class="btn btn-info float-left" data-toggle="modal" data-target="#editplayground"
+              (click)="GetPlaygroundByID(item.PlaygroundID)"><i class="fas fa-edit"></i> Edit</button>
+            <button class="btn btn-dark float-right" (click)="GetSubPlaygroundByPlayGroundID(item.PlaygroundID)"
+              data-toggle="collapse" data-target="#subPlayGrounds"><i class="fas fa-eye"></i> View Sub</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end cards-->
+
+  <!-------------------------------------------------------------------------------------->
+  <!--Start Play Grounds Edit Modal-->
+  <div class="modal fade" id="editplayground" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Club {{CurrentModalPlayground.Name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--ID Input-->
+          <input #playgroundID="ngModel" [(ngModel)]="CurrentModalPlayground.PlaygroundID" hidden>
+          <!--Name Input-->
+          <form #playgroundForm="ngForm">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-futbol"></i></span>
+              </div>
+              <input required maxlength="50" type="text" class="form-control" name="playgroundName" id="playgroundName"
+                #playgroundName="ngModel" [(ngModel)]="CurrentModalPlayground.Name" placeholder="Playground Name">
+              <div class="alert alert-danger mt-3" role="alert"
+                *ngIf="playgroundName.invalid && (playgroundName.dirty || playgroundName.touched)">
+                <div *ngIf="playgroundName.errors.required"><strong>Required Field!</strong> Please add your playground
+                  name.</div>
+              </div>
+            </div>
+            <!--City Input-->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-city"></i></span>
+              </div>
+              <select class="form-control" id="playgroundCity" name="playgroundCity" required #playgroundCity="ngModel"
+                [(ngModel)]="CurrentModalPlayground.City">
+                <option disabled value="none">Select City..</option>
+                <option *ngFor="let item of cities" [value]="item">{{item}}</option>
+              </select>
+            </div>
+            <!--Street Input-->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-road"></i></span>
+              </div>
+              <input class="form-control" type="text" name="playgroundStreet" id="playgroundStreet"
+                #playgroundStreet="ngModel" [(ngModel)]="CurrentModalPlayground.Street" required placeholder="Street Name">
+              <div class="alert alert-danger mt-3" role="alert"
+                *ngIf="playgroundStreet.invalid && (playgroundStreet.dirty || playgroundStreet.touched)">
+                <div *ngIf="playgroundStreet.errors.required"><strong>Required Field!</strong> Please add your
+                  playground
+                  street.</div>
+              </div>
+            </div>
+            <!--Phone 1 Input-->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
+              </div>
+              <input class="form-control" type="tel" placeholder="Phone Number" name="playgroundPhone1"
+                pattern="^01[0-5]{1}[0-9]{8}" id="playgroundPhone1" #playgroundPhone1="ngModel"
+                [(ngModel)]="CurrentModalPlayground.Phone1" required maxlength="11"
+                onKeyDown="if (!(event.keyCode>=96 && event.keyCode<=105) && event.keyCode!=8 && event.keyCode!=37 && event.keyCode!=39  && event.keyCode!=9&& !(event.keyCode>=48 && event.keyCode<=57)) return false">
+            </div>
+            <div class="alert alert-danger mt-3" role="alert"
+              *ngIf="playgroundPhone1.invalid && (playgroundPhone1.dirty || playgroundPhone1.touched)">
+              <div *ngIf="playgroundPhone1.errors.pattern">Make sure phone number is valid. <strong>EX:
+                  01xxxxxxxxx</strong></div>
+              <div *ngIf="playgroundPhone1.errors.required"><strong>Required Field!</strong> Please add your playground
+                phone number.</div>
+            </div>
+            <!--Phone 2 Input-->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
+              </div>
+              <input class="form-control input-custom" type="tel" placeholder="Phone Number 2 [Optional]"
+                name="playgroundPhone2" pattern="^01[0-5]{1}[0-9]{8}" id="playgroundPhone2" #playgroundPhone2="ngModel"
+                [(ngModel)]="CurrentModalPlayground.Phone2" maxlength="11"
+                onKeyDown="if (!(event.keyCode>=96 && event.keyCode<=105) && event.keyCode!=8 && event.keyCode!=37 && event.keyCode!=39  && event.keyCode!=9&& !(event.keyCode>=48 && event.keyCode<=57)) return false">
+              <div class="alert alert-danger mt-3" role="alert"
+                *ngIf="playgroundPhone2.invalid && (playgroundPhone2.dirty || playgroundPhone2.touched)">
+                <div *ngIf="playgroundPhone2.errors.pattern">Make sure phone number is valid. <strong>EX:
+                    01xxxxxxxxx</strong></div>
+              </div>
+            </div>
+            <!--Buttons-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="closeEdit" data-dismiss="modal">Close</button>
+              <button type="button" [disabled]="!playgroundForm.form.valid" class="btn btn-primary"
+                (click)="GetPlayGroundData(playgroundID.value,playgroundName.value,playgroundCity.value,playgroundStreet.value,playgroundPhone1.value,playgroundPhone2.value)">Save
+                changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Play Grounds Edit Modal-->
+
+  <!-------------------------------------------------------------------------------------->
+
+  <!-- subplaygrounds -->
+  <div class="container" id="subPlayGrounds">
+    <div class="card mb-3" *ngFor="let item of SubPlaygroundsObject">
+      <div class="row no-gutters">
+        <div>
+          <img src="https://via.placeholder.com/150" class="card-img" alt="..." style="width: 271px;height: 227px;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h4 class="card-title">Playground</h4>
+            <h5 class="card-text"><span class="badge badge-info"><i class="fas fa-dollar-sign"></i> Price</span>
+              {{item.Price}}</h5>
+            <h5 class="card-text"><span class="badge badge-info"><i class="fas fa-layer-group"></i> Type</span> <span
+                *ngIf="item.Type==5">5 Players</span><span *ngIf="item.Type==7">7 Players</span></h5>
+            <h5 class="card-text"><span class="badge badge-info"><i class="far fa-smile-beam"></i> Rate</span> <span
+                *ngIf="item.Rate==0"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i
+                  class="far fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==1"><i class="fas fa-star"></i><i class="far fa-star"></i><i
+                  class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+              <span *ngIf="item.Rate==5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+            </h5>
+            <div class="clearfix">
+              <span class="float-right"><button class="btn btn-danger m-1" (click)="DeleteSubPlayground(item.SubPlaygroundID)"><i
+                    class="fa fa-trash"></i>
+                  Delete</button></span>
+              <span class="float-right"><button class="btn btn-info m-1" (click)="GetSubPlayground(item.SubPlaygroundID)"
+                  data-toggle="modal" data-target="#editsubplayground"><i class="fas fa-edit"></i>
+                  Edit</button></span>
+              <span class="float-right"><button class="btn btn-dark m-1" (click)="ReserveSubPlayground(item.SubPlaygroundID)"><i
+                    class="fa fa-trash"></i>
+                  Reserve</button></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-------------------------------------------------------------------------------------->
+  <!--Start Sub Play Grounds Edit Modal-->
+  <div class="modal fade" id="editsubplayground" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--ID Input-->
+          <input #subplaygroundID="ngModel" [(ngModel)]="CurrentModalSubPlayground.SubPlaygroundID" hidden>
+          <!--Prce Input-->
+          <form #subplaygroundForm="ngForm">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-dollar-sign"></i></span>
+              </div>
+                <input class="form-control input-custom" type="number" placeholder="Playground Price" required
+                name="subplaygroundPrice" id="subplaygroundPrice" #subplaygroundPrice="ngModel" [(ngModel)]="CurrentModalSubPlayground.Price">
+                <div class="alert alert-danger" role="alert" *ngIf="subplaygroundPrice.invalid && (subplaygroundPrice.dirty || subplaygroundPrice.touched)">
+                    <div *ngIf="subplaygroundPrice.errors.required"><strong>Reqruied Field!</strong> Please specify your playground price.</div>
+                </div>
+            </div>
+            <!--Type Input-->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-object-ungroup"></i></span>
+                </div>
+                <select class="form-control" id="subplaygroundType" #subplaygroundType>
+                    <option value="0" disabled>Select Type...</option>
+                    <option value="5" selected>Five Players</option>
+                    <option value="7">Seven Players</option>
+                  </select>
+              </div>
+            <!--Buttons-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="closeEditSub" data-dismiss="modal">Close</button>
+              <button type="button" [disabled]="!subplaygroundForm.form.valid" class="btn btn-primary"
+                (click)="GetSubPlayGroundData(subplaygroundID.value,subplaygroundPrice.value,subplaygroundType.value)">Save
+                changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Play Grounds Edit Modal-->

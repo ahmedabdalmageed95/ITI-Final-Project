@@ -1,0 +1,17 @@
+.modalBackground{
+    background-image: url(../../../assets/imgs/success.png);
+    height: 173px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-bottom: none;
+}
+
+.anchorBtn{
+    cursor: pointer;
+    color: white !important;
+    font-weight: bold;
+    padding: 17px;
+    border-radius: 35px;
+    width: 177px;
+    margin: 15px;
+}

@@ -1,0 +1,64 @@
+<!-- Start Navbar -->
+<div class="mb-3">
+<app-navbar-owner></app-navbar-owner>
+</div>
+<!-- End Navbar -->
+
+<div class="addplayground my-5">
+    <div class="form-title">
+      <h1>Add Sub Playground</h1>
+    </div>
+
+    <form class="form-custom" #subForm="ngForm">
+        <div class="row">
+            <div class="col-sm-12 ">
+              <div class="picture-container">
+                <div class="picture">
+                  <img src="../../../assets/imgs/upload.jpg" class="picture-src" id="subplaygroundImage" title="" />
+                  <input type="file" id="subplaygroundImage" #subplaygroundImage>
+                </div>
+                <h6>Choose Sub Playground Image</h6>
+              </div>
+            </div>
+          </div>
+  
+      <div class="row">
+        <div class="col-12">
+          <label for="subplaygroundPrice">Price</label>
+          <div class="form-group">
+            <div class="input-container">
+              <i class="fas fa-dollar-sign icon"></i>
+              <input class="form-control input-custom" type="number" placeholder="Playground Price" required
+                name="subplaygroundPrice" id="subplaygroundPrice" #subplaygroundPrice="ngModel" [(ngModel)]="FormSubPlayGround.Price">
+              <div class="required">
+              </div>
+              
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="subplaygroundPrice.invalid && (subplaygroundPrice.dirty || subplaygroundPrice.touched)">
+                <div *ngIf="subplaygroundPrice.errors.required"><strong>Reqruied Field!</strong> Please specify your playground price.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label for="subplaygroundType">Playground Type</label>
+          <div class="input-container">
+            <i class="fas fa-object-ungroup icon"></i>
+            <select class="form-control input-custom" id="subplaygroundType" #subplaygroundType required>
+              <option value="0" disabled>Select Type...</option>
+              <option value="5" selected>Five Players</option>
+              <option value="7">Seven Players</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-12">
+          <input type="submit" [disabled]="subForm.form.invalid" class="form-control btn btn-success" style="margin-top:15px" value="Finish Adding"
+            (click)="GetSubPlayGroundData(subplaygroundPrice.value,subplaygroundType.value,subplaygroundImage.value)">
+        </div>
+      </div>
+    </form>
+  </div> 

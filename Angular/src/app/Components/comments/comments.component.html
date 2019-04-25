@@ -1,0 +1,98 @@
+<div class="container my-3" >
+  <div class="commentSection row">
+      <div class="profImagClient col-md-2">
+        <img src="../../../assets/imgs/02.jpg">
+      </div>
+      <div class="commantInfo col-md-10 row">
+        <div class="comment col-md-8">
+            <strong class="name">{{currentClient.FirstName}} {{currentClient.LastName}}</strong>
+           <form class="form" #reviewForm="ngForm" >
+             <div class="form-group">
+              <input #commentText type="text" class="form-control" placeholder="Enter Comment"/>
+             </div>
+            <button  class="btn btn-danger" (click)=addNewComment(commentText.value,rateValue.value)> Add Review</button>
+
+          </form>
+
+          </div>
+          <div class="Rate col-md-4">
+              <p class="card-text">
+                <i class="far fa-smile-beam"></i> <strong>Enter  Rate: </strong>
+                <span class="card-text">
+                  <span >
+                      <i class="far fa-star" value="1" ></i>
+                      <i class="far fa-star" value="2"></i>
+                      <i class="far fa-star" value="3" ></i>
+                      <i class="far fa-star" value="4" ></i>
+                      <i class="far fa-star" value="5" ></i>
+                  </span>
+                  <input type="number" class="rateValueSpan" #rateValue disabled hidden />
+                 <div class="alert alert-danger errormessage" *ngIf="rateValueIsSet==false" >
+                    Please Enter Rate
+                </div>
+                </span>
+              </p>
+          </div>
+        </div>
+  </div>
+  <div class="commentSection row" *ngFor="let review of allSpecificReviewData;let i=index">
+  <div class="profImagClient col-md-2">
+    <img src="../../../assets/imgs/02.jpg">
+  </div>
+  <div class="commantInfo col-md-10 row">
+    <div class="comment col-md-8">
+        <strong class="name">{{allClientSpecificReviewData[i]?.FirstName}} {{allClientSpecificReviewData[i]?.LastName}}</strong>
+        <p class="clientComment" *ngIf="review.Comment!=''">{{review?.Comment}}</p>
+    </div>
+      <div class="Rate col-md-4">
+          <p class="card-text">
+            <i class="far fa-smile-beam"></i> <strong> Rate: </strong>
+            <span class="card-text">
+              <span *ngIf="review.Rate==0">
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+              </span>
+              <span *ngIf="review.Rate==1">
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+              </span>
+              <span *ngIf="review.Rate==2">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+              </span>
+              <span *ngIf="review.Rate==3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+              </span>
+              <span *ngIf="review.Rate==4">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </span>
+              <span *ngIf="review.Rate==5">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+            </span>
+          </p>
+      </div>
+    </div>
+  </div>
+</div>

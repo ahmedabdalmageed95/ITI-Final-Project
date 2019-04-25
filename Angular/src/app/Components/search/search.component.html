@@ -1,0 +1,225 @@
+<div class="mb-3">
+    <app-navbar *ngIf="status==0"></app-navbar>
+    <app-navbar-client *ngIf="status==2"></app-navbar-client>
+    <app-navbar-owner *ngIf="status==1"></app-navbar-owner>
+</div>
+
+<div class="addplayground  my-5" *ngIf="!ShowSearch">
+    <div class="form-title">
+        <h1>Search Playgrounds</h1>
+    </div>
+    <div class="row">
+        <ul class="custom-list">
+            <li class="activeListItem">Check the options you want to search with</li>
+        </ul>
+    </div>
+    <form class="form-title">
+
+        <div class="row">
+            <div class="col-sm-12 ">
+                <label for="SearchbyName" class="form-check-label">Name</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" aria-label="Checkbox for following text input" name="SearchbyName"
+                                id="SearchbyName" [(ngModel)]="WillSearchByName">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox" name="Name" id="Name"
+                        [disabled]="!WillSearchByName" [(ngModel)]="CurrentName" [required]="'WillSearchByName'" min="3"
+                        max="15">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12 ">
+                <label for="SearchbyCity" class="form-check-label">City</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" name="SearchbyCity" id="SearchbyCity" [(ngModel)]="WillSearchByCity">
+                        </div>
+                    </div>
+                    <select class="form-control form-check-label" (ngModelChange)="onChange($event)" name="City" id="City" [disabled]="!WillSearchByCity"
+                        [(ngModel)]="currentCity">
+                        <option *ngFor="let item of cities" [value]="item">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" [hidden]="!WillSearchByCity">
+            <div class="col-sm-12 ">
+                <label class="form-check-label">Street</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" name="SearchbyStreet" id="SearchbyStreet"
+                                [hidden]="!WillSearchByCity" [(ngModel)]="WillSearchByStreet">
+                        </div>
+                    </div>
+                    <select class="form-control form-check-label" name="Street" id="Street"
+                         [(ngModel)]="currentStreet" [hidden]="!WillSearchByStreet||!WillSearchByCity"> 
+                        <option *ngFor="let item of streets" [value]="item">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 ">
+                <label for="SearchbyRate" class="form-check-label">Rate</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" aria-label="Checkbox for following text input" name="SearchbyRate"
+                                id="SearchbyRate" [(ngModel)]="WillSearchByRate">
+                        </div>
+                    </div>
+                    <select class="form-control form-check-label"
+                        style="font-family: FontAwesome, sans-serif;color: orangered" name="Rate" id="Rate"
+                        [disabled]="!WillSearchByRate" [(ngModel)]="CurrentRate">
+                        <option [value]="0" disabled>Select rate...</option>
+                        <option [value]="5">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                        <option [value]="4">&#xf005;&#xf005;&#xf005;&#xf005;</option>
+                        <option [value]="3">&#xf005;&#xf005;&#xf005;</option>
+                        <option [value]="2">&#xf005;&#xf005;</option>
+                        <option [value]="1">&#xf005;</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 ">
+                <label for="SearchbyPrice" class="form-check-label">Price</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" aria-label="Checkbox for following text input" name="SearchbyPrice"
+                                id="SearchbyPrice" [(ngModel)]="WillSearchByPrice">
+                        </div>
+                    </div>
+                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="Price"
+                        id="Price" [disabled]="!WillSearchByPrice" [(ngModel)]="CurrentPrice">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <button class="form-control btn btn-info" (click)='search()'>Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--Start cards-->
+<div class="container cards" *ngIf="ShowSearch&&Finished">
+    <div class="text-center mx-auto my-3">
+        <button class="btn btn-primary " (click)="goback()">Re-Adjust Search Options</button>
+    </div>
+    <div class="row" *ngIf="Result?.length>0">
+        <div class="col-md-4  my-3" *ngFor="let item of Result;let k=index">
+            <div class="card" style="width: 18rem;">
+                <img src="../../../assets/imgs/02.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">{{item?.Name}}</h3>
+                    <p class="card-text"><i class="fas fa-map-marker-alt"></i> <strong>City: </strong>{{item?.City}} -
+                        {{item.Street}}</p>
+                    <p class="card-text"><i class="fas fa-phone"></i> <strong>Phones: </strong>{{item?.Phone1}}
+                        <span *ngIf="item.Phone2!=null"> - </span>{{item?.Phone2}}</p>
+                    <p class="card-text"><i class="far fa-smile-beam"></i> <strong>Rate: </strong><span
+                            class="card-text">
+                            <span *ngIf="item.Rate==0"><i class="far fa-star"></i><i class="far fa-star"></i><i
+                                    class="far fa-star"></i><i class="far fa-star"></i><i
+                                    class="far fa-star"></i></span>
+                            <span *ngIf="item.Rate==1"><i class="fas fa-star"></i><i class="far fa-star"></i><i
+                                    class="far fa-star"></i><i class="far fa-star"></i><i
+                                    class="far fa-star"></i></span>
+                            <span *ngIf="item.Rate==2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="far fa-star"></i><i class="far fa-star"></i><i
+                                    class="far fa-star"></i></span>
+                            <span *ngIf="item.Rate==3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="far fa-star"></i><i
+                                    class="far fa-star"></i></span>
+                            <span *ngIf="item.Rate==4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="far fa-star"></i></span>
+                            <span *ngIf="item.Rate==5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></span>
+                        </span>
+                    </p>
+                    <div class="dropdown-divider"></div>
+                    <button class="btn btn-primary w-100 " data-toggle="collapse" data-target="#subPlayGrounds"
+                        (click)='GetSubPlayGrounds(item?.PlaygroundID)' [hidden]="UserIDtype!==2">View Sub of
+                        {{item?.Name}}</button>
+                    <div *ngIf="Playgroundshows[k]">
+                        <div class="dropdown-divider "></div>
+                        <span *ngFor="let it of subPlaygrounds;let i = index">
+                            <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#SubPlayGround"
+                                (click)='GetSubplayground(it?.SubPlaygroundID)' [hidden]="!Finish_sub">PlayGround
+                                {{i+1}}</button>
+                            <div class="dropdown-divider"></div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="Result?.length==0" class="text-center my-3">
+        <div class="alert alert-warning">
+            <strong>Sorry<br></strong>No Results Found, you can go back to re-adjust search options.
+        </div>
+    </div>
+
+</div>
+<!--end cards-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="SubPlayGround" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SubPlayGround">Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input hidden [(ngModel)]="CurrentsubPlayground.SubPlaygroundID" #SubPlaygroundID="ngModel">
+                <img src="../../../assets/imgs/logo-icon.png" alt="..." class="rounded float-right" width="50%">
+                <strong>Price: </strong>{{CurrentsubPlayground?.Price}} EGP<br>
+                <strong>Type: </strong>{{CurrentsubPlayground?.Type}} Players<br>
+                <strong>Rate: </strong><span class="card-text">
+
+                    <span *ngIf="CurrentsubPlayground.Rate==0"><i class="far fa-star"></i><i class="far fa-star"></i><i
+                            class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                    <span *ngIf="CurrentsubPlayground.Rate==1"><i class="fas fa-star"></i><i class="far fa-star"></i><i
+                            class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                    <span *ngIf="CurrentsubPlayground.Rate==2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                    <span *ngIf="CurrentsubPlayground.Rate==3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                    <span *ngIf="CurrentsubPlayground.Rate==4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                    <span *ngIf="CurrentsubPlayground.Rate==5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                </span><br>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="ReserveClub(SubPlaygroundID.value)">Reserve</button>
+            </div>
+        </div>
+    </div>
+</div>

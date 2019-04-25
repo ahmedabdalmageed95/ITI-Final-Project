@@ -1,0 +1,278 @@
+<!-- Start Navbar -->
+<div class="mb-3">
+<app-navbar-owner></app-navbar-owner>
+</div>
+<!-- End Navbar -->
+
+<div class="addplayground my-5" *ngIf="GoToSubPlayGrounds==false && GoToSummary == false">
+  <div class="form-title">
+    <h1>Add Main Playground</h1>
+  </div>
+
+  <div class="row">
+    <ul class="custom-list">
+      <li class="activeListItem">Main Club Info</li>
+      <li>Sub Playground Info</li>
+      <li>Summary</li>
+    </ul>
+  </div>
+
+  <form class="form-custom" #playgroundForm="ngForm">
+    <div class="row">
+      <div class="col-sm-12 ">
+        <div class="picture-container">
+          <div class="picture">
+            <img src="../../../assets/imgs/upload.jpg" class="picture-src" id="wizardPicturePreview" title="" />
+            <input type="file" id="playgroundImage" #playgroundImage accept="image/*" (change)="onFileChanged($event)">
+          </div>
+          <h6>Choose Playground Image</h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <label for="playgroundName">Name</label>
+        <div class="form-group">
+          <div class="input-container">
+            <i class="fas fa-futbol icon"></i>
+            <input class="form-control input-custom" required maxlength="50" type="text" placeholder="Playground Name"
+              name="playgroundName" id="playgroundName" #playgroundName="ngModel" [(ngModel)]="FormPlayGround.Name">
+            <div class="required"></div>
+          </div>
+          <div class="alert alert-danger" role="alert"
+            *ngIf="playgroundName.invalid && (playgroundName.dirty || playgroundName.touched)">
+            <div *ngIf="playgroundName.errors.required"><strong>Required Field!</strong> Please add your playground
+              name.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <label for="playgroundCountry">Country</label>
+        <select class="form-control" disabled id="playgroundCountry" #playgroundCountry>
+          <option value="Egypt">Egypt</option>
+        </select>
+      </div>
+      <div class="col-6">
+        <label for="playgroundCity">City</label>
+        <select class="form-control" id="playgroundCity" name="playgroundCity" required #playgroundCity>
+           <option disabled value="none">Select City..</option>
+         <!-- <option value="Giza" selected>Giza</option>
+          <option value="Cairo">Cairo</option>
+          <option value="October">6 October</option> -->
+          <option *ngFor="let item of cities" [value]="item">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <label for="playgroundStreet">Street</label>
+        <div class="form-group">
+          <div class="input-container">
+            <i class="fas fa-road icon"></i>
+            <input class="form-control input-custom" type="text" placeholder="Street Name" name="playgroundStreet"
+              id="playgroundStreet" #playgroundStreet="ngModel" [(ngModel)]="FormPlayGround.Street" required>
+            <div class="required"></div>
+          </div>
+          <div class="alert alert-danger" role="alert"
+            *ngIf="playgroundStreet.invalid && (playgroundStreet.dirty || playgroundStreet.touched)">
+            <div *ngIf="playgroundStreet.errors.required"><strong>Required Field!</strong> Please add your playground
+              street.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <label for="playgroundPhone1">Phone</label>
+        <div class="form-group">
+          <div class="input-container">
+            <i class="fas fa-phone icon"></i>
+            <input class="form-control input-custom" type="tel" placeholder="Phone Number" name="playgroundPhone1"
+              pattern="^01[0-5]{1}[0-9]{8}" id="playgroundPhone1" #playgroundPhone1="ngModel"
+              [(ngModel)]="FormPlayGround.Phone1" required maxlength="11"
+              onKeyDown="if (!(event.keyCode>=96 && event.keyCode<=105) && event.keyCode!=8 && event.keyCode!=37 && event.keyCode!=39  && event.keyCode!=9&& !(event.keyCode>=48 && event.keyCode<=57)) return false">
+
+            <div class="required"></div>
+          </div>
+          <div class="alert alert-danger" role="alert"
+            *ngIf="playgroundPhone1.invalid && (playgroundPhone1.dirty || playgroundPhone1.touched)">
+            <div *ngIf="playgroundPhone1.errors.pattern">Make sure phone number is valid. <strong>EX:
+                01xxxxxxxxx</strong></div>
+            <div *ngIf="playgroundPhone1.errors.required"><strong>Required Field!</strong> Please add your playground
+              phone number.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <label for="playgroundPhone2">Phone 2</label>
+        <div class="form-group">
+          <div class="input-container">
+            <i class="fas fa-phone icon"></i>
+            <input class="form-control input-custom" type="tel" placeholder="Phone Number 2 [Optional]"
+              name="playgroundPhone2" pattern="^01[0-5]{1}[0-9]{8}" id="playgroundPhone2" #playgroundPhone2="ngModel"
+              [(ngModel)]="FormPlayGround.Phone2" maxlength="11"
+              onKeyDown="if (!(event.keyCode>=96 && event.keyCode<=105) && event.keyCode!=8 && event.keyCode!=37 && event.keyCode!=39  && event.keyCode!=9&& !(event.keyCode>=48 && event.keyCode<=57)) return false">
+          </div>
+          <div class="alert alert-danger" role="alert"
+            *ngIf="playgroundPhone2.invalid && (playgroundPhone2.dirty || playgroundPhone2.touched)">
+            <div *ngIf="playgroundPhone2.errors.pattern">Make sure phone number is valid. <strong>EX:
+                01xxxxxxxxx</strong></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <input type="submit" [disabled]="!playgroundForm.form.valid" value="Move to Next Step"
+            class="form-control btn btn-success " style="margin-top:15px"
+            (click)="GetPlayGroundData(playgroundName.value,playgroundCountry.value,playgroundCity.value,playgroundStreet.value,playgroundPhone1.value,playgroundPhone2.value,playgroundImage.value)">
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+
+
+
+<!-- sssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
+
+<div class="addplayground my-5" *ngIf="GoToSubPlayGrounds==true && GoToSummary == false">
+  <div class="form-title">
+    <h1>Add Sub Playground</h1>
+  </div>
+
+  <div class="row">
+    <ul class="custom-list">
+      <li>Main Club Info</li>
+      <li class="activeListItem">Sub Playground Info</li>
+      <li>Summary</li>
+    </ul>
+  </div>
+
+
+  <form class="form-custom">
+
+    <div class="row">
+      <div class="col-sm-12 ">
+        <div class="picture-container">
+          <div class="picture">
+            <img src="../../../assets/imgs/upload.jpg" class="picture-src" id="subplaygroundImage" title="" />
+            <input type="file" id="subplaygroundImage" #subplaygroundImage>
+          </div>
+          <h6>Choose Sub Playground Image</h6>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-12">
+        <label for="subplaygroundPrice">Price</label>
+        <div class="form-group">
+          <div class="input-container">
+            <i class="fas fa-dollar-sign icon"></i>
+            <input class="form-control input-custom" type="number" placeholder="Playground Price" required
+              name="subplaygroundPrice" id="subplaygroundPrice" #subplaygroundPrice="ngModel"
+              [(ngModel)]="FormSubPlayGround.Price">
+            <div class="required">
+            </div>
+
+          </div>
+          <div class="alert alert-danger" role="alert"
+            *ngIf="subplaygroundPrice.invalid && (subplaygroundPrice.dirty || subplaygroundPrice.touched)">
+            <div *ngIf="subplaygroundPrice.errors.required"><strong>Reqruied Field!</strong> Please specify your
+              playground price.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <label for="subplaygroundType">Playground Type</label>
+        <div class="input-container">
+          <i class="fas fa-object-ungroup icon"></i>
+          <select class="form-control input-custom" id="subplaygroundType" #subplaygroundType required>
+            <option value="0" disabled>Select Type...</option>
+            <option value="5" selected>Five Players</option>
+            <option value="7">Seven Players</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col-12">
+        <input type="submit" class="form-control btn btn-success" style="margin-top:15px" value="Finish Adding"
+          (click)="GetSubPlayGroundData(subplaygroundPrice.value,subplaygroundType.value,subplaygroundImage.value)">
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<!-- summaaaaaaaaaaaaaaaaaaaaaaaaaaaaary -->
+
+<div class="addplayground my-5" *ngIf="GoToSummary==true && GoToSubPlayGrounds == false;">
+  <!-- <div class="addplayground my-5"> -->
+  <div class="form-title">
+    <h1>Summary</h1>
+  </div>
+
+  <div class="row">
+    <ul class="custom-list">
+      <li>Main Club Info</li>
+      <li>Sub Playground Info</li>
+      <li class="activeListItem">Summary</li>
+    </ul>
+  </div>
+
+
+  <div class="form-custom">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <h1 class="text-center my-2">Your Club info</h1>
+          <div class="card mx-auto my-5 text-center">
+            <img class="card-img-top" src="../../../assets/imgs/upload.jpg" alt="Card image cap" height="500"
+              width="250">
+            <div class="card-body">
+              <h1 class="card-title">{{FormPlayGround.Name}}</h1>
+              <p class="card-text">Egypt</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <h5>Street</h5>{{FormPlayGround.Street}}
+              </li>
+              <li class="list-group-item">
+                <h5>Phones</h5>{{FormPlayGround.Phone1}}<br>{{FormPlayGround.Phone2}}
+              </li>
+              <li class="list-group-item">
+                <h5>Price</h5>{{FormSubPlayGround.Price}}
+              </li>
+            </ul>
+            <div class="card-body">
+              <a [routerLink]="['/owner/clubs']" routerLinkActive="active"
+                class="form-control btn btn-success">Finish</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
